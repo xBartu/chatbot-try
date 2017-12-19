@@ -56,7 +56,7 @@ class Train:
         from math import exp
         train_enc, train_dec, dev_enc, dev_dec, _, _ = prepare_custom_data('cps',
                 'data/train.enc', 'data/train.dec', 'data/test.enc', 'data/test.dec', 20000, 20000)
-        gpu = prepare_custom_data(0.700)
+        gpu = tf.GPUOptions(per_process_gpu_memory_fraction=0.700)
         conf = tf.ConfigProto(gpu_options=gpu)
         conf.gpu_options.allocator_type = 'BFC'
         with tf.Session(config=conf) as session:
